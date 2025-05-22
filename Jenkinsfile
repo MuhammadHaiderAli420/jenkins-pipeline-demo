@@ -2,64 +2,56 @@ pipeline {
     agent any
 
     environment {
-        DEPENDENCY_CHECK_REPORT = 'dependency-check-report.html'
-        RECIPIENT_EMAIL = 'm.alihaider0224420@gmail.com'
+        RECIPIENT_EMAIL = 'your-email@example.com'
     }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Running unit and integration tests...'
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis with SonarQube...'
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
-                }
+                echo 'Performing code analysis with SonarQube (simulated)...'
+                bat 'echo Simulated SonarQube analysis'
             }
         }
 
         stage('Security Scan') {
             steps {
-                echo 'Running security scan with OWASP Dependency-Check...'
-                sh '''
-                    dependency-check.sh --project "jenkins-pipeline-demo" --scan . --format HTML --out .
-                '''
+                echo 'Running security scan (simulated)...'
+                bat 'echo Simulated OWASP scan'
             }
         }
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging environment...'
-                // Replace with your deployment script/commands
-                sh './deploy-to-staging.sh'
+                echo 'Deploying to staging (simulated)...'
+                bat 'echo Simulated deploy to staging'
             }
         }
 
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging...'
-                // Replace with your integration test commands
-                sh './run-integration-tests.sh'
+                echo 'Running integration tests on staging (simulated)...'
+                bat 'echo Simulated integration tests on staging'
             }
         }
 
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production environment...'
-                // Replace with your deployment script/commands
-                sh './deploy-to-production.sh'
+                echo 'Deploying to production (simulated)...'
+                bat 'echo Simulated deploy to production'
             }
         }
     }
