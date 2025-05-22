@@ -2,10 +2,8 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_URL = 'http://your-sonarqube-server:9000'
-        SONARQUBE_TOKEN = credentials('sonarqube-token')
         DEPENDENCY_CHECK_REPORT = 'dependency-check-report.html'
-        RECIPIENT_EMAIL = 'your-email@example.com'
+        RECIPIENT_EMAIL = 'm.alihaider0224420@gmail.com'
     }
 
     stages {
